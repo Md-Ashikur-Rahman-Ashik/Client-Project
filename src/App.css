@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+nav a.active {
+  @apply bg-gray-100 px-3 py-0.5 rounded;
+}
+
+.swiper-slide {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+html {
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "id": "adhad786f78df6djfb8889d9a3b",
+    "name": "Tech Innovators Conference 2025",
+    "thumbnail": "https://i.ibb.co.com/35vKcycX/tech.png",
+    "category": "Technology",
+    "date": "2025-05-15",
+    "location": "Dhaka Convention Center, Dhaka",
+    "entry_fee": 500,
+    "description": "An exclusive gathering of tech leaders and innovators from across Bangladesh. This event serves as a platform for unveiling groundbreaking technologies, networking with industry pioneers, and exploring the future of innovation. Attendees will experience keynote speeches, panel discussions, and hands-on workshops that span software development, cloud computing, hardware innovations, and emerging trends in the tech ecosystem. With a focus on collaboration and cross-sector innovation, this conference is a must-attend for aspiring and established tech professionals.",
+    "speakers": [
+      {
+        "name": "Ayesha Rahman",
+        "photo": "https://randomuser.me/api/portraits/women/45.jpg"
+      },
+      {
+        "name": "Shamim Hossain",
+        "photo": "https://randomuser.me/api/portraits/men/34.jpg"
+      },
+      {
+        "name": "Farzana Islam",
+        "photo": "https://randomuser.me/api/portraits/women/38.jpg"
+      }
+    ]
+  },
+  {
+    "id": "adhad786f78df6djfb8889db77f",
+    "name": "Bangladesh AI & Robotics Expo",
+    "thumbnail": "https://i.ibb.co.com/7JW16yRB/aiexpo.png",
+    "category": "Artificial Intelligence",
+    "date": "2025-06-20",
+    "location": "Bangabandhu Hi-Tech City, Gazipur",
+    "entry_fee": 600,
+    "description": "Showcasing AI breakthroughs and robotics solutions by Bangladeshi innovators. The expo brings together engineers, researchers, and AI enthusiasts to explore the transformative impact of machine learning, computer vision, and intelligent automation. Attendees will witness live demonstrations, interact with humanoid robots, and gain insights into how AI is reshaping industries like healthcare, agriculture, and manufacturing. Educational tracks and investor meetups are also a key part of this experience.",
+    "speakers": [
+      {
+        "name": "Dr. Arif Mahmud",
+        "photo": "https://randomuser.me/api/portraits/men/61.jpg"
+      },
+      {
+        "name": "Rumana Khan",
+        "photo": "https://randomuser.me/api/portraits/women/56.jpg"
+      },
+      {
+        "name": "Muntasir Alam",
+        "photo": "https://randomuser.me/api/portraits/men/28.jpg"
+      }
+    ]
+  },
+  {
+    "id": "adhad786f78df6djfb8889d33e8",
+    "name": "National Cybersecurity Summit",
+    "thumbnail": "https://i.ibb.co.com/prQrnvjQ/cubersec.png",
+    "category": "Cybersecurity",
+    "date": "2025-07-10",
+    "location": "ICT Tower, Agargaon, Dhaka",
+    "entry_fee": 400,
+    "description": "Strengthening digital defense and data privacy across Bangladesh. This summit brings together policymakers, IT professionals, and legal experts to discuss the critical role of cybersecurity in national infrastructure. Sessions will address emerging threats, incident response strategies, ethical hacking, and data protection regulations. The summit also provides an arena for ethical hackers and students to showcase their skills through live challenges and workshops.",
+    "speakers": [
+      {
+        "name": "Sadia Zaman",
+        "photo": "https://randomuser.me/api/portraits/women/19.jpg"
+      },
+      {
+        "name": "Tanvir Rahman",
+        "photo": "https://randomuser.me/api/portraits/men/23.jpg"
+      },
+      {
+        "name": "Moshiur Siddique",
+        "photo": "https://randomuser.me/api/portraits/men/40.jpg"
+      }
+    ]
+  },
+  {
+    "id": "adhad786f78df6djfb8889d4c92",
+    "name": "Blockchain Bangladesh Forum 2025",
+    "thumbnail": "https://i.ibb.co.com/zhqMbSTG/blok.png",
+    "category": "Blockchain",
+    "date": "2025-08-05",
+    "location": "BASIS Auditorium, Dhaka",
+    "entry_fee": 550,
+    "description": "Advancing blockchain adoption and fintech innovation in Bangladesh. This forum is designed to bring clarity to blockchain technology and its practical applications in finance, supply chain, digital identity, and governance. Experts and entrepreneurs will discuss smart contracts, decentralized finance (DeFi), and the legal landscape surrounding blockchain. A dedicated startup showcase will give young innovators a chance to pitch to investors and industry leaders.",
+    "speakers": [
+      {
+        "name": "Rakibul Hasan",
+        "photo": "https://randomuser.me/api/portraits/men/49.jpg"
+      },
+      {
+        "name": "Nabila Ahmed",
+        "photo": "https://randomuser.me/api/portraits/women/63.jpg"
+      },
+      {
+        "name": "Kawsar Chowdhury",
+        "photo": "https://randomuser.me/api/portraits/men/12.jpg"
+      }
+    ]
+  },
+  {
+    "id": "adhad786f78df6djfb8889d8ef1",
+    "name": "Startup Bangladesh Launchpad",
+    "thumbnail": "https://i.ibb.co.com/NddLD4Zw/startup.png",
+    "category": "Startups",
+    "date": "2025-09-12",
+    "location": "Startup Bangladesh HQ, Gulshan, Dhaka",
+    "entry_fee": 300,
+    "description": "Empowering emerging startups and entrepreneurs in Bangladesh. This launchpad event will feature startup pitching sessions, panel discussions with successful founders, and networking opportunities with venture capitalists and ecosystem enablers. Workshops will cover funding strategies, product-market fit, and digital marketing. It's a vibrant space for new ideas to take flight and for seasoned entrepreneurs to mentor the next generation.",
+    "speakers": [
+      {
+        "name": "Zara Malik",
+        "photo": "https://randomuser.me/api/portraits/women/26.jpg"
+      },
+      {
+        "name": "Hasibul Karim",
+        "photo": "https://randomuser.me/api/portraits/men/31.jpg"
+      },
+      {
+        "name": "Tanjina Chowdhury",
+        "photo": "https://randomuser.me/api/portraits/women/53.jpg"
+      }
+    ]
+  },
+  {
+    "id": "adhad786f78df6djfb8889d1ae6",
+    "name": "Green Tech & Sustainability Expo",
+    "thumbnail": "https://i.ibb.co.com/F4QVQS3D/green.png",
+    "category": "Green Technology",
+    "date": "2025-10-18",
+    "location": "Bangladesh Environment Center, Dhaka",
+    "entry_fee": 400,
+    "description": "Exploring innovations in sustainable technology and climate solutions for Bangladesh. The expo highlights eco-friendly technologies in energy, agriculture, and urban development. Experts will present on renewable energy systems, waste reduction, green architecture, and policy reforms. Startups and NGOs will exhibit their projects and products that support climate resilience. The event fosters collaboration between environmental scientists, policy-makers, and green entrepreneurs.",
+    "speakers": [
+      {
+        "name": "Greta Lin",
+        "photo": "https://randomuser.me/api/portraits/women/44.jpg"
+      },
+      {
+        "name": "Emil Hossain",
+        "photo": "https://randomuser.me/api/portraits/men/37.jpg"
+      },
+      {
+        "name": "Rehana Qadir",
+        "photo": "https://randomuser.me/api/portraits/women/61.jpg"
+      }
+    ]
+  }
+]
