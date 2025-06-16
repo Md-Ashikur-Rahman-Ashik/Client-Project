@@ -1,4 +1,4 @@
-import React, { useState, use } from "react";
+import React, { useState, useContext } from "react";
 import { HiMenu } from "react-icons/hi";
 import {
   IoLogInOutline,
@@ -10,9 +10,10 @@ import { AuthContext } from "./provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
   const handleLogOut = () => {
     logOut()
@@ -66,12 +67,41 @@ const Navbar = () => {
         {user ? (
           <div className="flex gap-3">
             <div>
-              <img
-                src={user.photoURL}
-                alt="Profile"
-                className="size-9 rounded-full border-2 border-orange-600"
-                title={user.displayName || "No name"}
-              />
+              <div className="relative">
+                <img
+                  src={user.photoURL}
+                  alt="Profile"
+                  className="size-9 rounded-full border-2 border-orange-600 cursor-pointer"
+                  title={user.displayName || "No name"}
+                  onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                />
+
+                {profileDropdownOpen && (
+                  <div className="absolute right-0 mt-2 w-44 bg-white border shadow-lg rounded-lg z-50 text-sm">
+                    <NavLink
+                      to="/create-event"
+                      className="block px-4 py-2 hover:bg-orange-100"
+                      onClick={() => setProfileDropdownOpen(false)}
+                    >
+                      Create Event
+                    </NavLink>
+                    <NavLink
+                      to="/manage-events"
+                      className="block px-4 py-2 hover:bg-orange-100"
+                      onClick={() => setProfileDropdownOpen(false)}
+                    >
+                      Manage Events
+                    </NavLink>
+                    <NavLink
+                      to="/joined-events"
+                      className="block px-4 py-2 hover:bg-orange-100"
+                      onClick={() => setProfileDropdownOpen(false)}
+                    >
+                      Joined Events
+                    </NavLink>
+                  </div>
+                )}
+              </div>
             </div>
             <div
               onClick={handleLogOut}
