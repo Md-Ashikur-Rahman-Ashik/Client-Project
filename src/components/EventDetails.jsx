@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router";
 import {
   FaCalendarAlt,
   FaClock,
@@ -18,13 +19,18 @@ const EventDetails = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    fetch("/events.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const found = data.find((e) => e.id.toString() === id);
-        setEvent(found || null);
+    fetch(`/api/events/${id}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Event not found");
+        return res.json();
       })
-      .catch((err) => console.error("Error loading event:", err));
+      .then((data) => {
+        setEvent(data);
+      })
+      .catch((err) => {
+        console.error(err);
+        setEvent(null);
+      });
   }, [id]);
 
   useEffect(() => {
@@ -33,15 +39,30 @@ const EventDetails = () => {
     }
   }, [event]);
 
-  const handleReserve = (e) => {
+  const handleReserve = async (e) => {
     e.preventDefault();
+
     if (!name || !email) {
       toast.error("Please enter your name and email.");
       return;
     }
-    toast.success("Seat reserved successfully!");
-    setName("");
-    setEmail("");
+
+    try {
+      const res = await fetch("/api/join-event", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ eventId: event._id, name, email }),
+      });
+
+      if (!res.ok) throw new Error("Failed to join");
+
+      toast.success("Seat reserved successfully!");
+      setName("");
+      setEmail("");
+    } catch (error) {
+      toast.error("Internal server error. Please try again.");
+      console.error(error);
+    }
   };
 
   if (event === null) {

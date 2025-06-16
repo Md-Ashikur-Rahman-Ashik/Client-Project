@@ -13,11 +13,16 @@ const UpcomingEvents = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/events/upcoming")
-      .then((res) => res.json())
-      .then((data) => setEvents(data.slice(0, 6)))
-      .catch((error) => console.error("Error loading events:", error));
-  }, []);
+  fetch("http://localhost:3000/api/events/upcoming")
+    .then((res) => res.json())
+    .then((data) => {
+      const now = new Date();
+      const upcoming = data.filter((event) => new Date(event.eventDate) > now);
+      setEvents(upcoming.slice(0, 6));
+    })
+    .catch((error) => console.error("Error loading events:", error));
+}, []);
+
 
   return (
     <section className="md:py-12 py-7 bg-gray-50">
