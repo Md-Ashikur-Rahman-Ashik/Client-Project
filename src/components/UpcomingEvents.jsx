@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { FaCalendarAlt, FaMapMarkerAlt, FaTag, FaClock, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import {
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaTag,
+  FaClock,
+  FaArrowRight,
+} from "react-icons/fa";
 
 const UpcomingEvents = () => {
   const [events, setEvents] = useState([]);
   const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
-    fetch("/events.json")
+    fetch("http://localhost:3000/api/events/upcoming")
       .then((res) => res.json())
       .then((data) => setEvents(data.slice(0, 6)))
       .catch((error) => console.error("Error loading events:", error));
@@ -19,8 +26,8 @@ const UpcomingEvents = () => {
           Upcoming Events
         </h2>
         <p className="text-gray-600 text-center md:mb-10 mb-6 max-w-2xl mx-auto">
-          Join our exciting lineup of upcoming events. Find
-          something that interests you!
+          Join our exciting lineup of upcoming events. Find something that
+          interests you!
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4">
@@ -83,12 +90,12 @@ const UpcomingEvents = () => {
 
                 <div className="flex-grow" />
 
-                <a
-                  href={`/events/${event.id}`}
+                <Link
+                  to={`/events/${event.id}`}
                   className="w-full py-2 px-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors text-sm flex items-center justify-center gap-2"
                 >
                   View More <FaArrowRight />
-                </a>
+                </Link>
               </div>
             </div>
           ))}
