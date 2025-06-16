@@ -15,6 +15,7 @@ import PrivateRoute from "./components/provider/PrivateRoute";
 import Profile from "./pages/Profile";
 import { Toaster } from "react-hot-toast";
 import EventCalendar from "./pages/EventCalendar";
+import CreateEvent from "./pages/CreateEventPage";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <Profile />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/create-event-page",
+    element: (
+      <PrivateRoute>
+        <CreateEvent />
       </PrivateRoute>
     ),
   },
