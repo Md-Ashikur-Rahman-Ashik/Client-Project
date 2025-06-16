@@ -16,22 +16,43 @@ const CreateEvent = ({ user }) => {
 
   const [startDate, setStartDate] = useState(null);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (!startDate || startDate <= new Date()) {
       toast.error("Please select a future date.");
       return;
     }
 
     const eventData = {
-      ...data,
-      date: startDate.toISOString(),
-      userEmail: user?.email || "unknown",
+      title: data.title,
+      description: data.description,
+      eventType: data.eventType,
+      thumbnailUrl: data.thumbnail,
+      location: data.location,
+      eventDate: startDate.toISOString(),
+      createdBy: user?.email || "unknown",
     };
 
-    // Simulating an API call
-    console.log("Event Data:", eventData);
-    toast.success("Event created successfully!");
-    navigate("/upcoming-events");
+    try {
+      const res = await fetch("http://localhost:3000/api/events", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(eventData),
+      });
+
+      const result = await res.json();
+
+      if (res.ok) {
+        toast.success(result.message || "Event created successfully!");
+        navigate("/upcoming-events");
+      } else {
+        toast.error(result.message || "Failed to create event.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (
