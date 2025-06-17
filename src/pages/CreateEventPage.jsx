@@ -45,7 +45,7 @@ const CreateEvent = ({ user }) => {
 
       if (res.ok) {
         toast.success(result.message || "Event created successfully!");
-        navigate("/upcoming-events");
+        navigate("/events");
       } else {
         toast.error(result.message || "Failed to create event.");
       }
