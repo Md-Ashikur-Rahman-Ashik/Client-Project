@@ -13,6 +13,7 @@ import EventDetails from "./components/EventDetails";
 import Events from "./pages/Events";
 import PrivateRoute from "./components/provider/PrivateRoute";
 import Profile from "./pages/Profile";
+import JoinedEventPage from "./pages/JoinedEvent"
 import { Toaster } from "react-hot-toast";
 import EventCalendar from "./pages/EventCalendar";
 import CreateEvent from "./pages/CreateEventPage";
@@ -52,6 +53,14 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <CreateEvent />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/joined-events",
+    element: (
+      <PrivateRoute>
+        <JoinedEventPage />
       </PrivateRoute>
     ),
   },
