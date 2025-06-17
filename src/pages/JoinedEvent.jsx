@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import { AuthContext } from "../components/provider/AuthProvider";
 
 const JoinedEventPage = () => {
-    const { user } = useContext(AuthContext); // ✅ Access user directly
+    const { user } = useContext(AuthContext);
     const [joinedEvents, setJoinedEvents] = useState([]);
     const [loading, setLoading] = useState(true);
 
