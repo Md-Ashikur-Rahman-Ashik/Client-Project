@@ -15,23 +15,28 @@ import Footer from "./Footer";
 const EventDetails = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
+const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    fetch(`https://assignment-eleven-chi.vercel.app/api/events/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Event not found");
-        return res.json();
-      })
-      .then((data) => {
-        setEvent(data);
-      })
-      .catch((err) => {
-        console.error(err);
-        setEvent(null);
-      });
-  }, [id]);
+  const fetchEvent = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch(`https://assignment-eleven-chi.vercel.app/api/events/${id}`);
+      if (!res.ok) throw new Error("Event not found");
+      const data = await res.json();
+      setEvent(data);
+    } catch (error) {
+      console.error(error);
+      setEvent(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchEvent();
+}, [id]);
 
   useEffect(() => {
     if (event) {
@@ -64,6 +69,22 @@ const EventDetails = () => {
       console.error(error);
     }
   };
+
+  if (loading) {
+  return (
+    <div className="flex justify-center items-center h-40">
+      <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+    </div>
+  );
+}
+
+if (!event) {
+  return (
+    <div className="text-center text-red-500 mt-4">
+      Event not found
+    </div>
+  );
+}
 
   if (event === null) {
     return (
