@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import Navbar from "../components/Navbar";
+import { AuthContext } from "../components/provider/AuthProvider"; // 👈 Import AuthContext
 
-const CreateEvent = ({ user }) => {
+const CreateEvent = () => {
+  const { user } = useContext(AuthContext); // 👈 Get user from context
   const navigate = useNavigate();
   const {
     register,
@@ -22,6 +24,11 @@ const CreateEvent = ({ user }) => {
       return;
     }
 
+    if (!user?.email) {
+      toast.error("User not logged in. Please login first.");
+      return;
+    }
+
     const eventData = {
       title: data.title,
       description: data.description,
@@ -29,7 +36,7 @@ const CreateEvent = ({ user }) => {
       thumbnailUrl: data.thumbnail,
       location: data.location,
       eventDate: startDate.toISOString(),
-      createdBy: user?.email || "unknown",
+      createdBy: user.email, // ✅ Use from context
     };
 
     try {
@@ -64,53 +71,39 @@ const CreateEvent = ({ user }) => {
             Create Event
           </h2>
           <p className="text-gray-600 text-center md:mb-10 mb-6 max-w-2xl mx-auto">
-            Fill out the form below to organize a new event. Make sure to enter
-            all required details.
+            Fill out the form below to organize a new event. Make sure to enter all required details.
           </p>
 
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="bg-white rounded-xl shadow-lg max-w-2xl mx-auto p-6 space-y-5"
           >
+            {/* Title */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Title
-              </label>
+              <label className="block mb-1 font-medium text-gray-700">Title</label>
               <input
                 type="text"
                 {...register("title", { required: "Title is required" })}
                 className="w-full border-gray-300 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
-              {errors.title && (
-                <p className="text-red-500 text-sm">{errors.title.message}</p>
-              )}
+              {errors.title && <p className="text-red-500 text-sm">{errors.title.message}</p>}
             </div>
 
+            {/* Description */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Description
-              </label>
+              <label className="block mb-1 font-medium text-gray-700">Description</label>
               <textarea
-                {...register("description", {
-                  required: "Description is required",
-                })}
+                {...register("description", { required: "Description is required" })}
                 className="w-full border-gray-300 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               ></textarea>
-              {errors.description && (
-                <p className="text-red-500 text-sm">
-                  {errors.description.message}
-                </p>
-              )}
+              {errors.description && <p className="text-red-500 text-sm">{errors.description.message}</p>}
             </div>
 
+            {/* Event Type */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Event Type
-              </label>
+              <label className="block mb-1 font-medium text-gray-700">Event Type</label>
               <select
-                {...register("eventType", {
-                  required: "Event type is required",
-                })}
+                {...register("eventType", { required: "Event type is required" })}
                 className="w-full border-gray-300 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               >
                 <option value="">Select event type</option>
@@ -118,51 +111,34 @@ const CreateEvent = ({ user }) => {
                 <option value="Plantation">Plantation</option>
                 <option value="Donation">Donation</option>
               </select>
-              {errors.eventType && (
-                <p className="text-red-500 text-sm">
-                  {errors.eventType.message}
-                </p>
-              )}
+              {errors.eventType && <p className="text-red-500 text-sm">{errors.eventType.message}</p>}
             </div>
 
+            {/* Thumbnail */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Thumbnail Image URL
-              </label>
+              <label className="block mb-1 font-medium text-gray-700">Thumbnail Image URL</label>
               <input
                 type="url"
-                {...register("thumbnail", {
-                  required: "Image URL is required",
-                })}
+                {...register("thumbnail", { required: "Image URL is required" })}
                 className="w-full border-gray-300 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
-              {errors.thumbnail && (
-                <p className="text-red-500 text-sm">
-                  {errors.thumbnail.message}
-                </p>
-              )}
+              {errors.thumbnail && <p className="text-red-500 text-sm">{errors.thumbnail.message}</p>}
             </div>
 
+            {/* Location */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Location
-              </label>
+              <label className="block mb-1 font-medium text-gray-700">Location</label>
               <input
                 type="text"
                 {...register("location", { required: "Location is required" })}
                 className="w-full border-gray-300 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
-              {errors.location && (
-                <p className="text-red-500 text-sm">
-                  {errors.location.message}
-                </p>
-              )}
+              {errors.location && <p className="text-red-500 text-sm">{errors.location.message}</p>}
             </div>
 
+            {/* Event Date */}
             <div>
-              <label className="block mb-1 font-medium text-gray-700">
-                Event Date
-              </label>
+              <label className="block mb-1 font-medium text-gray-700">Event Date</label>
               <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
