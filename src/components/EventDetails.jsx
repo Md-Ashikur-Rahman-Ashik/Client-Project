@@ -15,28 +15,28 @@ import Footer from "./Footer";
 const EventDetails = () => {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
-const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-  const fetchEvent = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch(`https://assignment-eleven-chi.vercel.app/api/events/${id}`);
-      if (!res.ok) throw new Error("Event not found");
-      const data = await res.json();
-      setEvent(data);
-    } catch (error) {
-      console.error(error);
-      setEvent(null);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const fetchEvent = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`https://assignment-eleven-chi.vercel.app/api/events/${id}`);
+        if (!res.ok) throw new Error("Event not found");
+        const data = await res.json();
+        setEvent(data);
+      } catch (error) {
+        console.error(error);
+        setEvent(null);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  fetchEvent();
-}, [id]);
+    fetchEvent();
+  }, [id]);
 
   useEffect(() => {
     if (event) {
@@ -71,20 +71,20 @@ const [loading, setLoading] = useState(true);
   };
 
   if (loading) {
-  return (
-    <div className="flex justify-center items-center h-40">
-      <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-    </div>
-  );
-}
+    return (
+      <div className="flex justify-center items-center h-40">
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
-if (!event) {
-  return (
-    <div className="text-center text-red-500 mt-4">
-      Event not found
-    </div>
-  );
-}
+  if (!event) {
+    return (
+      <div className="text-center text-red-500 mt-4">
+        Event not found
+      </div>
+    );
+  }
 
   if (event === null) {
     return (
@@ -118,19 +118,23 @@ if (!event) {
         </Link>
 
         <img
-          src={event.thumbnail || "https://assignment-eleven-chi.vercel.app/api/placeholder/800x400"}
+          src={event.thumbnailUrl || "https://assignment-eleven-chi.vercel.app/api/placeholder/800x400"}
           alt={event.name}
           className="w-full h-48 sm:h-64 md:h-72 lg:h-80 object-cover rounded-xl mb-4"
         />
 
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-          {event.name}
+          {event.title}
         </h1>
 
         <div className="flex flex-col sm:flex-row sm:flex-wrap sm:gap-x-6 text-gray-600 text-sm mb-4">
           <div className="flex items-center mb-2 sm:mb-0">
             <FaCalendarAlt className="mr-1 text-orange-600" />
-            {event.date}
+            {new Date(event.eventDate).toLocaleDateString("en-GB", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </div>
           <div className="flex items-center mb-2 sm:mb-0">
             <FaClock className="mr-1 text-orange-600" />
