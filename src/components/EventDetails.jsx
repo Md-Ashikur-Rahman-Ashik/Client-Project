@@ -19,7 +19,7 @@ const EventDetails = () => {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    fetch(`/api/events/${id}`)
+    fetch(`https://assignment-eleven-chi.vercel.app/api/events/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Event not found");
         return res.json();
@@ -48,7 +48,7 @@ const EventDetails = () => {
     }
 
     try {
-      const res = await fetch("/api/join-event", {
+      const res = await fetch("https://assignment-eleven-chi.vercel.app/api/join-event", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ eventId: event._id, name, email }),
@@ -97,7 +97,7 @@ const EventDetails = () => {
         </Link>
 
         <img
-          src={event.thumbnail || "/api/placeholder/800x400"}
+          src={event.thumbnail || "https://assignment-eleven-chi.vercel.app/api/placeholder/800x400"}
           alt={event.name}
           className="w-full h-48 sm:h-64 md:h-72 lg:h-80 object-cover rounded-xl mb-4"
         />

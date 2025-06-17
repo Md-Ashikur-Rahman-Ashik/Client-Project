@@ -13,7 +13,7 @@ const UpcomingEvents = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
   useEffect(() => {
-  fetch("http://localhost:3000/api/events/upcoming")
+  fetch("https://assignment-eleven-chi.vercel.app/api/events/upcoming")
     .then((res) => res.json())
     .then((data) => {
       const now = new Date();
@@ -53,7 +53,7 @@ const UpcomingEvents = () => {
             >
               <div className="relative">
                 <img
-                  src={event.thumbnailUrl || "/api/placeholder/400/240"}
+                  src={event.thumbnailUrl || "https://assignment-eleven-chi.vercel.app/api/placeholder/400/240"}
                   alt={event.title}
                   className="w-full h-48 object-cover"
                 />
