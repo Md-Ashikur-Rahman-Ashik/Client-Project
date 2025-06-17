@@ -5,6 +5,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
+import ManageEvents from "./pages/ManageEvents"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
     element: (
       <PrivateRoute>
         <JoinedEventPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/manage-events",
+    element: (
+      <PrivateRoute>
+        <ManageEvents />
       </PrivateRoute>
     ),
   },
