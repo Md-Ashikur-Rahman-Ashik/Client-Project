@@ -107,9 +107,11 @@ const CreateEvent = () => {
                 className="w-full border-gray-300 border p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               >
                 <option value="">Select event type</option>
-                <option value="Cleanup">Cleanup</option>
-                <option value="Plantation">Plantation</option>
-                <option value="Donation">Donation</option>
+                <option value="Cleanup">Artificial Intelligence</option>
+                <option value="Plantation">Cybersecurity</option>
+                <option value="Donation">Blockchain</option>
+                <option value="Donation">Startups</option>
+                <option value="Donation">Green Technology</option>
               </select>
               {errors.eventType && <p className="text-red-500 text-sm">{errors.eventType.message}</p>}
             </div>
